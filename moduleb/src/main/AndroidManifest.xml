@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.weiboyi.moduleb">
+
+    <application>
+        <activity
+            android:name=".ModuleBMainActivity"
+            android:label="@string/title_activity_module_bmain"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

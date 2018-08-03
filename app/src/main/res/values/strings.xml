@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RouterDemo</string>
+    <string name="title_activity_scheme">SchemeActivity</string>
+    <string name="title_activity_nav_filter">NavFilterActivity</string>
+</resources>
