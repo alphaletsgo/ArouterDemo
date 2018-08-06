@@ -4,13 +4,14 @@
 
 ## 非组件架构的痛点
 
-相信大家在开发中经常遇到以下情况，尤其是分层结构化的项目：
+目前大多数应用都是使用分层结构，这种结构虽然直观上看起来比较简洁，但是实际上在维护阶段这种结构还存在如下问题：
+
 - 增减需求如要命
 - 一个小需求要编译运行整个项目
 - 功能测试和需求测试每次都要进行
 - 灵活性差，业务耦合
 
-这种剪不断理还乱的结构，无时无刻不在督促我们要想组件化的架构演进。
+为了防止在项目迭代的过程中出现如上问题，我们开始着手研究组件化方案，关于组件化的好处我这里不再细数了，想要了解的可以自行搜索。
 
 ## 路由
 
@@ -58,11 +59,11 @@ apply from: "../third.gradle"
 
 ## 如何独立开发调试一个模块呢？
 
-我们知道独立的library要调试的话，必须将library作为一个应用才行，在gradle中将一个模块第一位库使用`apply plugin: 'com.android.library'`，一个应用则使用`apply plugin: 'com.android.application'`，所以我们解决方法就有了，我们可以在最外层的build.gradle文件中定义个一个isdebug常量，在每个模块中做一下判断：
+我们知道独立的library要调试的话，必须将library作为一个应用才行，在gradle中将一个模块第一位库使用`apply plugin: 'com.android.library'`，一个应用则使用`apply plugin: 'com.android.application'`，所以我们解决方法就有了，我们可以在最外层的build.gradle文件中定义个一个isDebug常量，在每个模块中做一下判断：
 ```groovy
-if (isdebug.boodlean()){
+if (isDebug.toBoolean()) {
     apply plugin: 'com.android.application'
-}else{
+} else {
     apply plugin: 'com.android.library'
 }
 ```
@@ -85,3 +86,5 @@ sourceSets {
 这样我们就解决模块的独立调试与开发的问题了。
 
 更多关于组件化实现的细节可以参考我们的[ARouterDemo](https://github.com/uncle404/ArouterDemo)。
+
+
